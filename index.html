@@ -91,8 +91,8 @@
         <label>Stan<select name="status"><option value="active">Mam</option><option value="low">Kończy się</option><option value="empty">Skończony</option></select></label>
         <label class="wide">Tagi<input name="tags" placeholder="np. dzienny, ulubiony, chłodny"></label>
         <label class="wide">Miejsce<select name="location"><option value="">Bez przypisania</option></select></label>
-        <label class="wide">Tekstura ze zdjęcia<input name="texture" type="file" accept="image/*"></label>
-        <div class="wide texture-tools hidden" id="textureTools"><img id="texturePreview" alt="Podgląd tekstury"><button type="button" class="ghost" id="removeTexture">Usuń teksturę</button></div>
+        <label class="wide">Tekstury ze zdjęć — maks. 4<input name="texture" type="file" accept="image/*" multiple></label>
+        <div class="wide texture-tools hidden" id="textureTools"><div id="texturePreview" class="texture-preview-grid"></div><button type="button" class="ghost" id="removeTexture">Usuń wszystkie</button></div>
         <label class="wide">Notatka<textarea name="notes" rows="3" placeholder="Opis koloru, zamiennik, sposób użycia…"></textarea></label>
       </div>
       <div class="dialog-actions"><button type="button" class="danger hidden" id="deleteShadow">Usuń</button><span></span><button type="button" class="ghost close-dialog">Anuluj</button><button class="primary" type="submit">Zapisz</button></div>
