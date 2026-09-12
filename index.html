@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f7f4f1">
+  <title>Cienie Oli</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">Kolekcja makijażu</p>
+      <h1>Cienie Oli</h1>
+    </div>
+    <button class="icon-btn" id="addShadowTop" aria-label="Dodaj cień">＋</button>
+  </header>
+
+  <main>
+    <section id="view-shadows" class="view active">
+      <div class="hero-row">
+        <div><h2>Wszystkie cienie</h2><p id="shadowCount" class="muted"></p></div>
+        <button class="primary" id="addShadow">Dodaj cień</button>
+      </div>
+      <div class="toolbar">
+        <input id="search" type="search" placeholder="Szukaj firmy, numeru, koloru…">
+        <select id="statusFilter" aria-label="Filtr statusu">
+          <option value="all">Wszystkie stany</option>
+          <option value="active">Aktywne</option>
+          <option value="low">Kończą się</option>
+          <option value="empty">Skończone</option>
+        </select>
+      </div>
+      <div id="shadowGrid" class="shadow-grid"></div>
+      <div id="emptyShadows" class="empty hidden"><span>✦</span><h3>Jeszcze tu pusto</h3><p>Dodaj pierwszy cień do kolekcji.</p></div>
+    </section>
+
+    <section id="view-groups" class="view">
+      <div class="hero-row"><div><h2>Kategorie</h2><p class="muted">Firma, seria, wykończenie i Twoje tagi</p></div></div>
+      <div class="segmented" id="groupMode">
+        <button class="active" data-group="brand">Firmy</button><button data-group="series">Serie</button><button data-group="finish">Wykończenia</button><button data-group="tags">Tagi</button>
+      </div>
+      <div id="groupList" class="group-list"></div>
+    </section>
+
+    <section id="view-palettes" class="view">
+      <div class="hero-row"><div><h2>Palety i miejsca</h2><p class="muted">Przeciągnij cień do wybranego pola</p></div><button class="primary" id="addPalette">Dodaj</button></div>
+      <div id="paletteList" class="palette-list"></div>
+      <div id="unplacedWrap"><h3>Bez przypisanego miejsca</h3><div id="unplaced" class="mini-grid"></div></div>
+    </section>
+
+    <section id="view-mixer" class="view">
+      <div class="hero-row"><div><h2>Mieszalnik</h2><p class="muted">Wizualny szkicownik kolorów</p></div><button class="ghost" id="clearCanvas">Wyczyść</button></div>
+      <div class="mixer-controls">
+        <label>Rozmiar <input id="brushSize" type="range" min="8" max="120" value="48"></label>
+        <label>Krycie <input id="brushOpacity" type="range" min="5" max="100" value="45"></label>
+        <label>Tryb <select id="blendMode"><option value="source-over">Zwykły</option><option value="soft-mix">Mieszanie łagodne</option><option value="screen">Rozjaśnianie</option></select></label>
+      </div>
+      <div id="mixerSwatches" class="mixer-swatches"></div>
+      <canvas id="paintCanvas" width="1000" height="720"></canvas>
+      <p class="hint">To szkic ekranowy — nie przewiduje dokładnie zachowania pigmentu na skórze.</p>
+    </section>
+
+    <section id="view-settings" class="view">
+      <div class="hero-row"><div><h2>Ustawienia</h2><p class="muted">Kopia kolekcji i bezpieczeństwo danych</p></div></div>
+      <div class="settings-card"><h3>Kopia zapasowa</h3><p>Eksport zapisuje cienie, palety i tekstury w jednym pliku JSON.</p><div class="button-row"><button class="primary" id="exportData">Eksportuj</button><label class="button ghost">Importuj<input id="importData" type="file" accept="application/json" hidden></label></div></div>
+      <div class="settings-card"><h3>Informacje</h3><p>Dane są przechowywane tylko w tej przeglądarce. Regularnie rób eksport, zwłaszcza przed czyszczeniem danych telefonu.</p></div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Główna nawigacja">
+    <button class="active" data-view="shadows"><span>◉</span>Cienie</button>
+    <button data-view="groups"><span>◇</span>Kategorie</button>
+    <button data-view="palettes"><span>▦</span>Palety</button>
+    <button data-view="mixer"><span>∿</span>Mieszalnik</button>
+    <button data-view="settings"><span>⚙</span>Więcej</button>
+  </nav>
+
+  <dialog id="shadowDialog">
+    <form id="shadowForm">
+      <div class="dialog-head"><div><p class="eyebrow">Karta produktu</p><h2 id="shadowDialogTitle">Nowy cień</h2></div><button type="button" class="icon-btn close-dialog">×</button></div>
+      <input type="hidden" name="id">
+      <div class="form-grid">
+        <label>Firma<input name="brand" required placeholder="np. Inglot"></label>
+        <label>Numer<input name="number" placeholder="np. 397"></label>
+        <label class="wide">Nazwa<input name="name" placeholder="np. Just Chillin’"></label>
+        <label>Seria<input name="series" placeholder="np. Freedom System"></label>
+        <label>Wykończenie<select name="finish"><option value="">—</option><option>Matte</option><option>Pearl</option><option>AMC</option><option>AMC Shine</option><option>Double Sparkle</option><option>Creamy Pigment</option><option>Metallic</option><option>Satin</option><option>Inne</option></select></label>
+        <label>Kolor HEX<div class="color-row"><input name="hex" type="text" value="#b79285" pattern="#[0-9a-fA-F]{6}"><input name="picker" type="color" value="#b79285"></div></label>
+        <label>Stan<select name="status"><option value="active">Mam</option><option value="low">Kończy się</option><option value="empty">Skończony</option></select></label>
+        <label class="wide">Tagi<input name="tags" placeholder="np. dzienny, ulubiony, chłodny"></label>
+        <label class="wide">Miejsce<select name="location"><option value="">Bez przypisania</option></select></label>
+        <label class="wide">Tekstura ze zdjęcia<input name="texture" type="file" accept="image/*"></label>
+        <div class="wide texture-tools hidden" id="textureTools"><img id="texturePreview" alt="Podgląd tekstury"><button type="button" class="ghost" id="removeTexture">Usuń teksturę</button></div>
+        <label class="wide">Notatka<textarea name="notes" rows="3" placeholder="Opis koloru, zamiennik, sposób użycia…"></textarea></label>
+      </div>
+      <div class="dialog-actions"><button type="button" class="danger hidden" id="deleteShadow">Usuń</button><span></span><button type="button" class="ghost close-dialog">Anuluj</button><button class="primary" type="submit">Zapisz</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="paletteDialog">
+    <form id="paletteForm"><div class="dialog-head"><h2>Nowa paleta lub miejsce</h2><button type="button" class="icon-btn close-palette">×</button></div>
+      <label>Nazwa<input name="name" required placeholder="np. Inglot Freedom 10"></label>
+      <label>Rodzaj<select name="type"><option value="palette">Paleta z polami</option><option value="container">Pojemnik / szuflada</option></select></label>
+      <label>Liczba miejsc<input name="slots" type="number" min="1" max="100" value="10"></label>
+      <div class="dialog-actions"><button type="button" class="ghost close-palette">Anuluj</button><button class="primary">Dodaj</button></div>
+    </form>
+  </dialog>
+
+  <div id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
