@@ -1,10 +1,35 @@
-const KEY='cienie-oli-v1';
+const KEY='cienie-oli-v1',SEED_VERSION=2;
 const seed={
   shadows:[
     ['inglot-490','Inglot','490','','Freedom System','Double Sparkle','#b51f58',['malina','fuksja'],'active',''],
     ['inglot-426','Inglot','426','','Freedom System','Pearl','#1768b3',['niebieski','szafir'],'active',''],
+    ['inglot-253','Inglot','253','','Freedom System','Matte','#c7c0bc',['kolor do uzupełnienia'],'active',''],
+    ['inglot-301','Inglot','301','','Freedom System','Matte','#c7c0bc',['kolor do uzupełnienia'],'active',''],
+    ['inglot-207','Inglot','207','','Freedom System','Matte','#c7c0bc',['kolor do uzupełnienia'],'active',''],
+    ['inglot-335','Inglot','335','','Freedom System','Matte','#c7c0bc',['kolor do uzupełnienia'],'active',''],
+    ['inglot-281','Inglot','281','','Freedom System','Matte','#c7c0bc',['kolor do uzupełnienia'],'active',''],
+    ['inglot-296','Inglot','296','','Freedom System','Matte','#c7c0bc',['kolor do uzupełnienia'],'active',''],
+    ['inglot-382','Inglot','382','','Freedom System','Matte','#c7c0bc',['kolor do uzupełnienia'],'active',''],
+    ['inglot-304','Inglot','304','','Freedom System','Matte','#c7c0bc',['kolor do uzupełnienia'],'active',''],
+    ['inglot-292','Inglot','292','','Freedom System','Matte','#c7c0bc',['kolor do uzupełnienia'],'active',''],
+    ['inglot-283','Inglot','283','','Freedom System','Matte','#c7c0bc',['kolor do uzupełnienia'],'active',''],
+    ['inglot-297','Inglot','297','','Freedom System','Matte','#c7c0bc',['kolor do uzupełnienia'],'active',''],
+    ['inglot-299','Inglot','299','','Freedom System','Matte','#c7c0bc',['kolor do uzupełnienia'],'active',''],
+    ['inglot-300','Inglot','300','','Freedom System','Matte','#c7c0bc',['kolor do uzupełnienia'],'active',''],
+    ['inglot-303','Inglot','303','','Freedom System','Matte','#c7c0bc',['kolor do uzupełnienia'],'active',''],
+    ['inglot-311','Inglot','311','','Freedom System','Matte','#c7c0bc',['kolor do uzupełnienia'],'active',''],
+    ['inglot-390','Inglot','390','','Freedom System','Matte','#c7c0bc',['kolor do uzupełnienia'],'active',''],
+    ['inglot-215','Inglot','215','','Freedom System','Matte','#c7c0bc',['kolor do uzupełnienia'],'active',''],
+    ['inglot-319','Inglot','319','','Freedom System','Matte','#c7c0bc',['kolor do uzupełnienia'],'active',''],
+    ['inglot-209','Inglot','209','','Freedom System','Matte','#c7c0bc',['kolor do uzupełnienia'],'active',''],
+    ['inglot-357','Inglot','357','','Freedom System','Matte','#c7c0bc',['kolor do uzupełnienia'],'active',''],
+    ['inglot-351','Inglot','351','','Freedom System','Matte','#c7c0bc',['kolor do uzupełnienia'],'active',''],
     ['inglot-108r','Inglot','108R','','Rainbow','Matte','#ed762d',['pomarańczowy'],'active',''],
+    ['inglot-117r','Inglot','117R','','Rainbow','Matte','#c7c0bc',['kolor do uzupełnienia'],'active',''],
+    ['inglot-134r','Inglot','134R','','Rainbow','Matte','#c7c0bc',['kolor do uzupełnienia'],'active',''],
+    ['inglot-106r','Inglot','106R','','Rainbow','Matte','#c7c0bc',['kolor do uzupełnienia'],'active',''],
     ['inglot-j305','Inglot','J305','Ivory','Jennifer Lopez','Pearl','#dcc7a4',['beż','rozświetlający'],'active',''],
+    ['inglot-j337','Inglot','J337','','Jennifer Lopez','Pearl','#c7c0bc',['kolor do uzupełnienia'],'active',''],
     ['inglot-701','Inglot','701',"Just Chillin’",'Creamy Pigment','Creamy Pigment','#ead9b1',['białe złoto'],'active',''],
     ['inglot-463','Inglot','463','','Freedom System','Double Sparkle','#d8c8ad',['wanilia','złoto'],'active',''],
     ['inglot-153','Inglot','153','','Freedom System','AMC Shine','#8d766d',['taupe'],'active',''],
@@ -12,15 +37,23 @@ const seed={
     ['inglot-402','Inglot','402','','Freedom System','Pearl','#8a706b',['taupe','brąz'],'active',''],
     ['inglot-397','Inglot','397','','Freedom System','Pearl','#d6b6a8',['szampan','róż'],'active',''],
     ['inglot-142','Inglot','142','','Freedom System','AMC Shine','#d4b7bb',['opalizujący','róż'],'active',''],
+    ['inglot-118','Inglot','118','','Freedom System','AMC Shine','#c7c0bc',['kolor do uzupełnienia'],'active',''],
     ['inglot-111','Inglot','111','','Freedom System','AMC Shine','#d3aa52',['złoto'],'active',''],
     ['inglot-102','Inglot','102','','Freedom System','AMC Shine','#b98b36',['złoto'],'active',''],
-    ['inglot-140','Inglot','140','','Freedom System','AMC','#387e8b',['morski'],'active',''],
-    ['inglot-607','Inglot','607','','Freedom System','Pearl','#a23f4f',['malina','miedź'],'active','']
+    ['inglot-140','Inglot','140','','Freedom System','AMC Shine','#387e8b',['morski'],'active',''],
+    ['inglot-607','Inglot','607','','Freedom System','Pearl','#a23f4f',['malina','miedź'],'active',''],
+    ['inglot-439','Inglot','439','','Freedom System','Pearl','#c7c0bc',['kolor do uzupełnienia'],'active',''],
+    ['inglot-450','Inglot','450','','Freedom System','Pearl','#c7c0bc',['kolor do uzupełnienia'],'active',''],
+    ['inglot-605','Inglot','605','','Freedom System','Pearl','#c7c0bc',['kolor do uzupełnienia'],'active',''],
+    ['inglot-606','Inglot','606','','Freedom System','Pearl','#c7c0bc',['kolor do uzupełnienia'],'active',''],
+    ['inglot-393','Inglot','393','','Freedom System','Pearl','#c7c0bc',['kolor do uzupełnienia'],'active',''],
+    ['inglot-433','Inglot','433','','Freedom System','Pearl','#c7c0bc',['kolor do uzupełnienia'],'active',''],
+    ['inglot-423','Inglot','423','','Freedom System','Pearl','#c7c0bc',['kolor do uzupełnienia'],'active','']
   ].map(x=>({id:x[0],brand:x[1],number:x[2],name:x[3],series:x[4],finish:x[5],hex:x[6],tags:x[7],status:x[8],location:x[9],texture:'',notes:''})),
   palettes:[]
 };
 let state=load(), currentTexture='', groupBy='brand', paintColor='#b51f58', painting=false;
-function load(){try{return JSON.parse(localStorage.getItem(KEY))||structuredClone(seed)}catch{return structuredClone(seed)}}
+function load(){try{const saved=JSON.parse(localStorage.getItem(KEY));if(!saved)return {...structuredClone(seed),seedVersion:SEED_VERSION};if((saved.seedVersion||1)<SEED_VERSION){const known=new Map(saved.shadows.map(s=>[`${s.brand}|${s.number}`.toLowerCase(),s]));seed.shadows.forEach(fresh=>{const old=known.get(`${fresh.brand}|${fresh.number}`.toLowerCase());if(old){old.series=fresh.series;old.finish=fresh.finish}else saved.shadows.push(structuredClone(fresh))});saved.seedVersion=SEED_VERSION;localStorage.setItem(KEY,JSON.stringify(saved))}return saved}catch{return {...structuredClone(seed),seedVersion:SEED_VERSION}}}
 function save(){localStorage.setItem(KEY,JSON.stringify(state));renderAll()}
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 function esc(v=''){return String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
